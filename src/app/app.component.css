@@ -1,0 +1,12 @@
+#div{
+    height: 100%;
+}
+
+app-header, app-footer{
+    height: 20%;
+}
+
+app-body{
+    height: 60%;
+
+}

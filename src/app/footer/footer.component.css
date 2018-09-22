@@ -1,0 +1,16 @@
+.footer{
+    background-color: #ddd;
+    width: 100%;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create{ 
+    font-style: italic;
+    font-size: 10px;
+    color: rgb(109, 209, 114);
+    text-align: right;
+}
