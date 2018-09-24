@@ -1,0 +1,54 @@
+<!-- faire un ngFor avec la reponse rq sql de la recherche 
+<mat-nav-list>
+    <a mat-list-item href="..." *ngFor="let link of links"> {{ link }} </a>
+ </mat-nav-list>
+ or
+ <mat-selection-list #result>
+    <mat-list-option *ngFor="let result of resultList">
+      {{result}}
+    </mat-list-option>
+  </mat-selection-list>-->
+
+<h3>Résultat de la recherche</h3>
+
+<!-- si pas de resultat indiquer: Désolée nous n'avons trouvé aucune réponse, et si resultat trouvé indiquer: x reponses trouvées<p></p>-->
+
+<!--result for search process or link-->
+<mat-selection-list #resultProcess>
+  <mat-list-option>
+    <a href="#">result 1</a>
+  </mat-list-option>
+  <mat-list-option>
+    <a href="#">result 2</a>
+  </mat-list-option>
+  <mat-list-option>
+    <a href="#">result 3</a>
+  </mat-list-option>
+</mat-selection-list>
+
+
+
+<!--result for search contact-->
+
+<mat-card>
+
+  <mat-checkbox>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>face</mat-icon>
+      </div>
+      <mat-card-title>variables nomcontact en MAJ + prenom en min</mat-card-title>
+    </mat-card-header>
+  </mat-checkbox>
+
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>tel fixe</mat-list-item>
+      <mat-list-item>tel mobile</mat-list-item>
+      <mat-list-item mailto>email</mat-list-item>
+      <!-- ajouter un expand more pour plus de details-->
+      <mat-list-item><a href="#">+</a></mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  
+</mat-card>

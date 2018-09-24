@@ -1,0 +1,115 @@
+<div class="form-group">
+  <!--faire une rq pour recup tous les linkType existant ds la table-->
+  <h3>Que cherchez-vous?</h3>
+
+  <mat-tab-group>
+
+    <!--procedure/lien sheet-->
+    <mat-tab label="Procédure/Lien">
+      <h4>Formulaire de recherche</h4>
+      <form class="form-inline">
+        <!--title field-->
+        <div class="form-group">
+          <label for="ProcOrLinkTitle">Libellé</label>&nbsp;
+          <input type="text" class="form-control" id="ProcOrLinkTitle">
+        </div>&nbsp;
+        <!--typeLink field
+        <mat-form-field>
+            <mat-select placeholder="Type">
+              <mat-option *ngFor="let typeLink of typeLinkList" [value]="typeLink.name">
+                {{typeLink.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>-->
+        <mat-form-field>
+          <mat-select placeholder="Type">
+            <mat-option value="procedure">
+              Procédure
+            </mat-option>
+            <mat-option value="lien">
+              Lien
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field>
+          <mat-select placeholder="Activité">
+            <mat-option value="commun">
+              Commun
+            </mat-option>
+            <mat-option value="blueprism">
+              BluePrism
+            </mat-option>
+            <mat-option value="contextor">
+              Contextor
+            </mat-option>
+            <mat-option value="web">
+              Web
+            </mat-option>
+            <mat-option value="autres-assets">
+              Autres Assets
+            </mat-option>
+            <mat-option value="suivi de production">
+              Suivi de production
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button routerLink="/resultat-recherche" mat-flat-button>Valider</button>
+        </div>
+      </form>
+    </mat-tab>
+
+    <!--contact sheet-->
+    <mat-tab label="Contact">
+      <h4>Formulaire de recherche</h4>
+      <!-- formulaire pour rechercher un contact-->
+      <form class="form-inline">
+        <!--name field-->
+        <div class="form-group">
+          <label for="contactName">Nom</label>&nbsp;
+          <input type="text" class="form-control" id="contactName" placeholder="Saisir le nom">
+        </div>
+        &nbsp;
+        <!--firstname field-->
+        <div class="form-group">
+          <label for="contactFirstName">Prénom</label>&nbsp;
+          <input type="text" class="form-control" id="contactFirstName" placeholder="Saisir le prénom">
+        </div>
+        &nbsp;
+        <!--uid field-->
+        <div class="form-group">
+          <label for="contactUID">UID</label>&nbsp;
+          <input type="text" class="form-control" id="contactFirstName" placeholder="Saisir l'UID">
+        </div>
+        &nbsp;
+        <!--activity field-->
+        <mat-form-field>
+          <mat-select placeholder="Activité">
+            <mat-option value="commun">
+              Commun
+            </mat-option>
+            <mat-option value="blueprism">
+              BluePrism
+            </mat-option>
+            <mat-option value="contextor">
+              Contextor
+            </mat-option>
+            <mat-option value="web">
+              Web
+            </mat-option>
+            <mat-option value="autres-assets">
+              Autres Assets
+            </mat-option>
+            <mat-option value="suivi de production">
+              Suivi de production
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button routerLink="/resultat-recherche" mat-flat-button>Valider</button>
+        </div>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>

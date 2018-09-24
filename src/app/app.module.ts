@@ -1,15 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { FooterComponent } from 'src/app/footer/footer.component';
-import { BodyComponent } from 'src/app/body/body.component';
-import { HeaderComponent } from 'src/app/header/header.component';
+import { AppComponent } from 'src/app/app.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { BodyComponent } from 'src/app/components/body/body.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AccueilComponent } from './accueil/accueil.component';
-import { SearchComponent } from './search/search.component';
-import { CreateComponent } from './create/create.component';
-import { UpdateComponent } from './update/update.component';
+import { AccueilComponent } from 'src/app/components/accueil/accueil.component';
+import { SearchComponent } from 'src/app/components/search/search.component';
+import { CreateComponent } from 'src/app/components/create/create.component';
+import { UpdateComponent } from 'src/app/components/update/update.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
+import { ResultComponent } from 'src/app/components/result/result.component';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DataListsComponent } from 'src/app/components/data-lists/data-lists.component';
+
 
 const routes: Routes = [
 
@@ -19,10 +29,10 @@ const routes: Routes = [
 
     { path: '', redirectTo: '/accueil', pathMatch: 'full' },
 
-    /*{
+    {
      path: 'commun',
-      component: CommunComponent},
-
+      component: DataListsComponent},
+/*
     {
       path: 'activity/blueprism', 'activity/contextor', 'activity/web','activity/autres-assets', 'activity/suivi-de-production',
       component: ActivityComponent},*/
@@ -30,6 +40,11 @@ const routes: Routes = [
     {
         path: 'recherche',
          component: SearchComponent},
+
+    {
+    path: 'resultat-recherche',
+      component: ResultComponent},
+
 
     {
     path: 'creer',
@@ -55,12 +70,21 @@ const routes: Routes = [
     AccueilComponent,
     SearchComponent,
     CreateComponent,
-    UpdateComponent
+    UpdateComponent,
+    ResultComponent,
+    DataListsComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatListModule,
+    MatCardModule,
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
