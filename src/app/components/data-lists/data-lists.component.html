@@ -1,27 +1,17 @@
-<!-- displaying list of links-->
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Mes liens</div>
-
-  <!-- List group of links-->
-  <ul class="list-group" *ngFor="let link of linkAccessList">
-    <li class="list-group-item"><a href="{{link.path}}">{{link.title}}</a></li>
-  </ul>
-</div>
-
-<!--displaying list of process-->
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Mes process</div>
-
-  <!-- List group of process-->
-  <ul class="list-group" *ngFor="let process of processAccessList">
-    <li class="list-group-item"><a href="{{process.path}}">{{process.title}}</a></li>
-  </ul>
-</div>
-
-
-<!--displaying list of contacts in cards-->
+<h2>{{activityName}}</h2>
+<br>
+<app-link-list *ngFor="let linkType of linkTypeList" [activityId]= "activityIdCurrent" [linkTypeId]= "linkType.id"  [linkTypeName]= "linkType.nameLinkType"></app-link-list>
+<app-person-list  [activityId]= "activityIdCurrent"></app-person-list>
+<p>body</p>
+<p>body</p>
+<p>body</p>
+<p>body</p>
+<p>body</p>
+<p>body</p>
+<p>body</p>
+<p>body</p>
+<!--
+displaying list of contacts in cards
 <mat-card>
 
     <mat-checkbox>
@@ -38,10 +28,11 @@
         <mat-list-item>tel fixe</mat-list-item>
         <mat-list-item>tel mobile</mat-list-item>
         <mat-list-item mailto>email</mat-list-item>
-        <!-- ajouter un expand more pour plus de details-->
+     ajouter un expand more pour plus de details
         <mat-list-item><a href="#">+</a></mat-list-item>
       </mat-list>
     </mat-card-content>
     
   </mat-card>
 
+ -->

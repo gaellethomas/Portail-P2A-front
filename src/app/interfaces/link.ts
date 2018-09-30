@@ -1,9 +1,9 @@
-import { AccessType } from './access-type';
+import { LinkType } from './link-type';
 import { Activity } from './activity';
 
-export interface Access {
+export interface Link {
     id: number;
-    accessType: AccessType;
+    linkType: LinkType;
     title: string;
     path: string;
     activity: Activity;

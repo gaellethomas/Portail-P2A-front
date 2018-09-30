@@ -19,6 +19,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DataListsComponent } from 'src/app/components/data-lists/data-lists.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LinkListComponent } from 'src/app/components/link-list/link-list.component';
+import { PersonListComponent } from 'src/app/components/person-list/person-list.component';
 
 
 const routes: Routes = [
@@ -26,37 +29,18 @@ const routes: Routes = [
   // path = ' ' indicate if there is nothing after the port in the URL, the router redirect to path/accueil
   // and display "Accueil" sheet by default
   // path = "**" : if there is anything, never mind, the router display "Aliment" sheet
-
     { path: '', redirectTo: '/accueil', pathMatch: 'full' },
-
-    {
-     path: 'commun',
+    { path: 'activite/:activityName',
       component: DataListsComponent},
-/*
-    {
-      path: 'activity/blueprism', 'activity/contextor', 'activity/web','activity/autres-assets', 'activity/suivi-de-production',
-      component: ActivityComponent},*/
-
-    {
-        path: 'recherche',
-         component: SearchComponent},
-
-    {
-    path: 'resultat-recherche',
+    { path: 'recherche',
+      component: SearchComponent},
+    { path: 'resultat-recherche',
       component: ResultComponent},
-
-
-    {
-    path: 'creer',
+    { path: 'creer',
       component: CreateComponent},
-
-    {
-    path: 'mise-a-jour',
+    { path: 'mise-a-jour',
       component: UpdateComponent},
-
-
-    {
-      path: '**',
+    { path: '**',
       component: AccueilComponent}
      ] ;
 
@@ -72,7 +56,9 @@ const routes: Routes = [
     CreateComponent,
     UpdateComponent,
     ResultComponent,
-    DataListsComponent
+    DataListsComponent,
+    LinkListComponent,
+    PersonListComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +70,8 @@ const routes: Routes = [
     MatListModule,
     MatCardModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

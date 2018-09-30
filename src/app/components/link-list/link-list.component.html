@@ -1,0 +1,12 @@
+<div>
+  <!-- displaying list of links-->
+  <div class="panel panel-default">
+    <!-- Default panel contents-->
+    <div class="panel-heading">MES {{linkTypeName}}S</div>
+
+    <!--List group of links-->
+    <ul class="list-group" >
+      <li class="list-group-item" *ngFor="let link of linkList"><a href="{{link.path}}" target="_blank">{{link.title}}</a></li>
+    </ul>
+  </div>
+</div>

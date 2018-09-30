@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Access } from '../../interfaces/access';
-import { Person } from '../../interfaces/person';
-import { AccessService } from '../../services/access.service';
-import { AccessType } from 'src/app/interfaces/access-type';
+import { LinkType } from 'src/app/interfaces/link-type';
+import { ActivatedRoute } from '@angular/router';
+import { LinkTypeService } from 'src/app/services/link-type.service';
+
 
 @Component({
   selector: 'app-data-lists',
@@ -11,17 +11,34 @@ import { AccessType } from 'src/app/interfaces/access-type';
 })
 export class DataListsComponent implements OnInit {
 
-  linkAccessList: Access[] = [];
-  processAccessList: Access[] = [];
-  personList: Person[] = [];
-  accessTypeLink: AccessType;
-  accessTypeProcess: AccessType;
+  activityName = '';
+  activityIdCurrent = 1;
+  linkTypeList: LinkType[] = [];
 
-  constructor(public accessService: AccessService) { }
+  constructor(public route: ActivatedRoute,
+    public linkTypeService: LinkTypeService) {
+
+    this.route.params.subscribe((params) => {
+
+      if (params.hasOwnProperty('activityName')) {
+        this.activityName = params['activityName'];
+        switch (this.activityName) {
+          case 'commun': { this.activityIdCurrent = 1; break; }
+          case 'blueprism': { this.activityIdCurrent = 2; break; }
+          case 'contextor': { this.activityIdCurrent = 3; break; }
+          case 'web': { this.activityIdCurrent = 4; break; }
+          case 'autres-assets': { this.activityIdCurrent = 5; break; }
+          case 'suivi-de-production': { this.activityIdCurrent = 6; break; }
+          default: { this.activityIdCurrent = 1; break; }
+        }
+        this.linkTypeService.getByActivity(this.activityIdCurrent).subscribe((linkTypeList: LinkType[]) => {
+          this.linkTypeList = linkTypeList;
+        });
+      }
+    });
+  }
 
   ngOnInit() {
-    this.accessService.getAllByAccessType(this.accessTypeLink).subscribe((accessList: Access[]) => {
-    this.linkAccessList = accessList;
-    });
+
   }
 }
