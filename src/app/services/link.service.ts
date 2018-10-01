@@ -12,6 +12,10 @@ export class LinkService {
 
   constructor(private http: HttpClient) { }
 
+  getAll(): Observable<Link[]> {
+    return this.http.get<Link[]>(this.API_URL_LINK);
+  }
+
   getListByLinkTypeIdAndActivityId(linkTypeId: number, activityId: number): Observable<Link[]> {
     return this.http.get<Link[]> (this.API_URL_LINK + '/?typeLinkId=' + linkTypeId + '&activityId=' + activityId);
   }

@@ -3,61 +3,33 @@
   <h3>Que cherchez-vous?</h3>
 
   <mat-tab-group>
-
     <!--procedure/lien sheet-->
     <mat-tab label="Procédure/Lien">
       <h4>Formulaire de recherche</h4>
-      <form class="form-inline">
-        <!--title field-->
-        <div class="form-group">
-          <label for="ProcOrLinkTitle">Libellé</label>&nbsp;
-          <input type="text" class="form-control" id="ProcOrLinkTitle">
-        </div>&nbsp;
-        <!--typeLink field
-        <mat-form-field>
-            <mat-select placeholder="Type">
-              <mat-option *ngFor="let typeLink of typeLinkList" [value]="typeLink.name">
-                {{typeLink.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>-->
-        <mat-form-field>
-          <mat-select placeholder="Type">
-            <mat-option value="procedure">
-              Procédure
-            </mat-option>
-            <mat-option value="lien">
-              Lien
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        &nbsp;
-        <mat-form-field>
-          <mat-select placeholder="Activité">
-            <mat-option value="commun">
-              Commun
-            </mat-option>
-            <mat-option value="blueprism">
-              BluePrism
-            </mat-option>
-            <mat-option value="contextor">
-              Contextor
-            </mat-option>
-            <mat-option value="web">
-              Web
-            </mat-option>
-            <mat-option value="autres-assets">
-              Autres Assets
-            </mat-option>
-            <mat-option value="suivi de production">
-              Suivi de production
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div>
-          <button routerLink="/resultat-recherche" mat-flat-button>Valider</button>
-        </div>
-      </form>
+      <!--label field-->
+      <mat-form-field>
+        <input matInput name="linkName" [(ngModel)]= type="text" placeholder="Saisir un nom" aria-label="Libellé">
+      </mat-form-field>
+      &nbsp;
+      <!-- typeLink field-->
+      <mat-form-field>
+        <mat-select placeholder="Type">
+          <mat-option *ngFor="let linkType of linkTypeList" [value]="linkType">
+            {{linkType.nameLinkType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>&nbsp;
+      <!-- activity field-->
+      <mat-form-field>
+        <mat-select placeholder="Activité">
+          <mat-option *ngFor="let activity of activityList" [value]="activity">
+            {{activity.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button routerLink="/resultat-recherche" mat-flat-button>Valider</button>
+      </div>
     </mat-tab>
 
     <!--contact sheet-->
@@ -66,43 +38,25 @@
       <!-- formulaire pour rechercher un contact-->
       <form class="form-inline">
         <!--name field-->
-        <div class="form-group">
-          <label for="contactName">Nom</label>&nbsp;
-          <input type="text" class="form-control" id="contactName" placeholder="Saisir le nom">
-        </div>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Saisir le nom" aria-label="Nom" name="personName">
+        </mat-form-field>
         &nbsp;
         <!--firstname field-->
-        <div class="form-group">
-          <label for="contactFirstName">Prénom</label>&nbsp;
-          <input type="text" class="form-control" id="contactFirstName" placeholder="Saisir le prénom">
-        </div>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Saisir le prénom" aria-label="Prénom" name="personFirstName">
+        </mat-form-field>
         &nbsp;
         <!--uid field-->
-        <div class="form-group">
-          <label for="contactUID">UID</label>&nbsp;
-          <input type="text" class="form-control" id="contactFirstName" placeholder="Saisir l'UID">
-        </div>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Saisir l'uid" aria-label="UID" name="personUid">
+        </mat-form-field>
         &nbsp;
         <!--activity field-->
         <mat-form-field>
           <mat-select placeholder="Activité">
-            <mat-option value="commun">
-              Commun
-            </mat-option>
-            <mat-option value="blueprism">
-              BluePrism
-            </mat-option>
-            <mat-option value="contextor">
-              Contextor
-            </mat-option>
-            <mat-option value="web">
-              Web
-            </mat-option>
-            <mat-option value="autres-assets">
-              Autres Assets
-            </mat-option>
-            <mat-option value="suivi de production">
-              Suivi de production
+            <mat-option *ngFor="let activity of activityList" [value]="activity">
+              {{activity.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>

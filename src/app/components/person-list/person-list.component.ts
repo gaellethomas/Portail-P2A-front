@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
 import { Person } from 'src/app/interfaces/person';
-import { Listener } from 'selenium-webdriver';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-person-list',
@@ -21,8 +21,9 @@ export class PersonListComponent implements OnInit {
   ngOnInit() {
 // search persons who belong team P2A and participate in this activity
 this.personService.getListByP2aAndActivityId(true, this.activityId).subscribe((membersP2aList: Person[]) => {
-  this.membersP2aList = membersP2aList;
-});
+    this.membersP2aList = membersP2aList;
+    });
+
 // search persons who not belong team P2A and participate in this activity
 this.personService.getListByP2aAndActivityId(false, this.activityId).subscribe((contactList: Person[]) => {
   this.contactList = contactList;

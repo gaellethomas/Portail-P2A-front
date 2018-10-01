@@ -22,7 +22,8 @@ import { DataListsComponent } from 'src/app/components/data-lists/data-lists.com
 import { HttpClientModule } from '@angular/common/http';
 import { LinkListComponent } from 'src/app/components/link-list/link-list.component';
 import { PersonListComponent } from 'src/app/components/person-list/person-list.component';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
 
 const routes: Routes = [
 
@@ -71,6 +72,8 @@ const routes: Routes = [
     MatCardModule,
     MatIconModule,
     MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
     HttpClientModule
   ],
   providers: [],

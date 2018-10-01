@@ -12,7 +12,7 @@ import { LinkTypeService } from 'src/app/services/link-type.service';
 export class DataListsComponent implements OnInit {
 
   activityName = '';
-  activityIdCurrent = 1;
+  activityIdCurrent: number;
   linkTypeList: LinkType[] = [];
 
   constructor(public route: ActivatedRoute,
