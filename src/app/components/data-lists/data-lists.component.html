@@ -1,7 +1,11 @@
 <h2>{{activityName}}</h2>
 <br>
-<app-link-list *ngFor="let linkType of linkTypeList" [activityId]= "activityIdCurrent" [linkTypeId]= "linkType.id"  [linkTypeName]= "linkType.nameLinkType"></app-link-list>
-<app-person-list [activityId]= "activityIdCurrent"></app-person-list>
+<app-link-list *ngFor="let linkType of linkTypeList" [activityId]= "activityIdCurrent" [linkTypeId]= "linkType.id"  [linkTypeName]= "linkType.nameLinkType"></app-link-list> 
+<app-person-list [activityId]= "activityIdCurrent" [belongP2a]= "true"></app-person-list>
+<app-person-list [activityId]= "activityIdCurrent" [belongP2a]= "false"></app-person-list>
+<p></p>
+
+
 <p>body</p>
 <p>body</p>
 <p>body</p>
@@ -10,6 +14,7 @@
 <p>body</p>
 <p>body</p>
 <p>body</p>
+
 <!--
 displaying list of contacts in cards
 <mat-card>

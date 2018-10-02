@@ -1,31 +1,16 @@
-<div *ngIf="membersP2aList.length != 0">
+<ng-container *ngIf="personList && personList.length != 0">
   <!-- displaying list of links-->
   <div class="panel panel-default">
     <!-- Default panel contents-->
-    <div class="panel-heading">Membres P2A</div>
+      <div *ngIf="belongP2a" class="panel-heading">Membres P2A</div>
+      <div *ngIf="!belongP2a" class="panel-heading">Contacts</div>
 
     <!--List group of links-->
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let member of membersP2aList">
-        Nom: {{member.name}} Prénom: {{member.firstName}} mail: {{member.mailAddress}} Num. Tél.:
-        {{member.phoneNumber}}
+      <li class="list-group-item" *ngFor="let person of personList">
+        Nom: {{person.name}} Prénom: {{person.firstName}} mail: {{person.mailAddress}} Num. Tél.:
+        {{person.phoneNumber}}
       </li>
     </ul>
   </div>
-</div>
-
-<div *ngIf="contactList.length != 0">
-  <!-- displaying list of links-->
-  <div class="panel panel-default">
-    <!-- Default panel contents-->
-    <div class="panel-heading">Contacts</div>
-
-    <!--List group of links-->
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let contact of contactList">
-        Nom: {{contact.name}} Prénom: {{contact.firstName}} mail: {{contact.mailAddress}} Num. Tél.:
-        {{contact.phoneNumber}}
-      </li>
-    </ul>
-  </div>
-</div>
+</ng-container>

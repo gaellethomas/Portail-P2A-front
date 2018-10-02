@@ -17,4 +17,9 @@ export class PersonService {
     return this.http.get<Person[]> (this.API_URL_PERSON + '?belongP2a=' + belongP2a + '&activityId=' + activityId);
   }
 
+  getListPersonSearch(titleSearchedPatern: string, linkTypeId: number, activityId: number ): Observable<Person[]> {
+    return null;
+
+  }
+
 }

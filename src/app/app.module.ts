@@ -1,29 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from 'src/app/app.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { BodyComponent } from 'src/app/components/body/body.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
-import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from 'src/app/components/accueil/accueil.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { CreateComponent } from 'src/app/components/create/create.component';
 import { UpdateComponent } from 'src/app/components/update/update.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatSelectModule} from '@angular/material/select';
-import { ResultComponent } from 'src/app/components/result/result.component';
-import {MatListModule} from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DataListsComponent } from 'src/app/components/data-lists/data-lists.component';
-import { HttpClientModule } from '@angular/common/http';
+import { ResultComponent } from 'src/app/components/result/result.component';
 import { LinkListComponent } from 'src/app/components/link-list/link-list.component';
 import { PersonListComponent } from 'src/app/components/person-list/person-list.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
+import { RouterModule, Routes } from '@angular/router';
+
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatSelectModule} from '@angular/material/select';
+import { MatListModule} from '@angular/material/list';
+import { MatCardModule} from '@angular/material/card';
+import { MatIconModule} from '@angular/material/icon';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule, MatButtonModule} from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -74,7 +76,9 @@ const routes: Routes = [
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    MatButtonModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

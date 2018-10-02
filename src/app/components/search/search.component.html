@@ -8,27 +8,29 @@
       <h4>Formulaire de recherche</h4>
       <!--label field-->
       <mat-form-field>
-        <input matInput name="linkName" [(ngModel)]= type="text" placeholder="Saisir un nom" aria-label="Libellé">
+        <input matInput type="text" placeholder="Saisir un nom" [(ngModel)]="titleSearchedPatern" />
       </mat-form-field>
       &nbsp;
       <!-- typeLink field-->
       <mat-form-field>
-        <mat-select placeholder="Type">
-          <mat-option *ngFor="let linkType of linkTypeList" [value]="linkType">
+        <mat-select placeholder="Type" [(ngModel)]="linkTypeIdSelected">
+          <mat-option [value]="0" selected>TOUS</mat-option>
+          <mat-option *ngFor="let linkType of linkTypeList" [(value)]="linkType.id">
             {{linkType.nameLinkType}}
           </mat-option>
         </mat-select>
       </mat-form-field>&nbsp;
       <!-- activity field-->
       <mat-form-field>
-        <mat-select placeholder="Activité">
-          <mat-option *ngFor="let activity of activityList" [value]="activity">
+        <mat-select placeholder="Activité" [(ngModel)]="activityIdSelected">
+          <mat-option [value]="0" selected>TOUTES</mat-option>
+          <mat-option *ngFor="let activity of activityList" [value]="activity.id">
             {{activity.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <div>
-        <button routerLink="/resultat-recherche" mat-flat-button>Valider</button>
+        <button mat-flat-button (click)='searchLink()' routerLink="/resultat-recherche" [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)">Valider</button>
       </div>
     </mat-tab>
 
@@ -39,29 +41,31 @@
       <form class="form-inline">
         <!--name field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir le nom" aria-label="Nom" name="personName">
+          <input matInput type="text" placeholder="Saisir le nom" [(ngModel)]="namePersonEntered">
         </mat-form-field>
         &nbsp;
         <!--firstname field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir le prénom" aria-label="Prénom" name="personFirstName">
+          <input matInput type="text" placeholder="Saisir le prénom" [(ngModel)]="firstNameEntered">
         </mat-form-field>
         &nbsp;
         <!--uid field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir l'uid" aria-label="UID" name="personUid">
+          <input matInput type="text" placeholder="Saisir l'UID" [(ngModel)]="uidEntered">
         </mat-form-field>
         &nbsp;
         <!--activity field-->
         <mat-form-field>
-          <mat-select placeholder="Activité">
-            <mat-option *ngFor="let activity of activityList" [value]="activity">
+          <mat-select placeholder="Activité" [(ngModel)]="activityPersonSelected">
+            <mat-option [value]="0" selected>TOUTES</mat-option>
+            <mat-option *ngFor="let activity of activityList" [value]="activity.id">
               {{activity.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <div>
-          <button routerLink="/resultat-recherche" mat-flat-button>Valider</button>
+          <button (click)='searchPerson()' routerLink="/resultat-recherche" [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)"
+            mat-flat-button>Valider</button>
         </div>
       </form>
     </mat-tab>
