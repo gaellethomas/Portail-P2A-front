@@ -11,44 +11,40 @@
 
 <h3>Résultat de la recherche</h3>
 
-<!-- si pas de resultat indiquer: Désolée nous n'avons trouvé aucune réponse, et si resultat trouvé indiquer: x reponses trouvées<p></p>-->
+<p *ngIf="linkListFound == null && personListFound == null">Aucun résultat pour votre recherche</p>
 
-<!--result for search process or link-->
-<mat-selection-list #resultProcess>
-  <mat-list-option>
-    <a href="#">result 1</a>
-  </mat-list-option>
-  <mat-list-option>
-    <a href="#">result 2</a>
-  </mat-list-option>
-  <mat-list-option>
-    <a href="#">result 3</a>
-  </mat-list-option>
-</mat-selection-list>
+<ng-container *ngIf="linkListFound.length > 0 || personListFound.length > 0">
+  <p>{{linkListFound.length + personListFound.length}} résulat(s) pour votre recherche</p>
+  <!--result for search process or link-->
+  <mat-selection-list #resultLink *ngIf="linkListFound.length > 0 ;else resultPerson">
+    <mat-list-option *ngFor="let link of linkListFound">
+      <a href="{{link.path}}">{{link.title}}</a>
+    </mat-list-option>
+  </mat-selection-list>
 
 
 
-<!--result for search contact-->
+  <!--result for search contact-->
 
-<mat-card>
+  <mat-card #resultPerson *ngFor="let person of personListFound">
 
-  <mat-checkbox>
     <mat-card-header>
       <div mat-card-avatar>
         <mat-icon>face</mat-icon>
       </div>
-      <mat-card-title>variables nomcontact en MAJ + prenom en min</mat-card-title>
+      <mat-card-title>{{person.name}} {{person.firstName}}</mat-card-title>
+      <mat-card-subtitle mailto *ngIf="person.mailAddress">{{person.mailAddress}}</mat-card-subtitle>
     </mat-card-header>
-  </mat-checkbox>
 
-  <mat-card-content>
-    <mat-list>
-      <mat-list-item>tel fixe</mat-list-item>
-      <mat-list-item>tel mobile</mat-list-item>
-      <mat-list-item mailto>email</mat-list-item>
-      <!-- ajouter un expand more pour plus de details-->
-      <mat-list-item><a href="#">+</a></mat-list-item>
-    </mat-list>
-  </mat-card-content>
-  
-</mat-card>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
+        <mat-list-item *ngIf="person.phoneNumber">tél mobile:{{person.phoneNumber}}</mat-list-item>
+        <mat-list-item></mat-list-item>
+        <!-- ajouter un expand more pour plus de details-->
+        <mat-list-item><a href="#">+</a></mat-list-item>
+      </mat-list>
+    </mat-card-content>
+
+  </mat-card>
+</ng-container>

@@ -37,8 +37,6 @@ const routes: Routes = [
       component: DataListsComponent},
     { path: 'recherche',
       component: SearchComponent},
-    { path: 'resultat-recherche',
-      component: ResultComponent},
     { path: 'creer',
       component: CreateComponent},
     { path: 'mise-a-jour',

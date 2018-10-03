@@ -15,7 +15,7 @@
       <mat-form-field>
         <mat-select placeholder="Type" [(ngModel)]="linkTypeIdSelected">
           <mat-option [value]="0" selected>TOUS</mat-option>
-          <mat-option *ngFor="let linkType of linkTypeList" [(value)]="linkType.id">
+          <mat-option *ngFor="let linkType of linkTypeList" [value]="linkType.id">
             {{linkType.nameLinkType}}
           </mat-option>
         </mat-select>
@@ -30,7 +30,7 @@
         </mat-select>
       </mat-form-field>
       <div>
-        <button mat-flat-button (click)='searchLink()' routerLink="/resultat-recherche" [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)">Valider</button>
+        <button mat-flat-button (click)="searchLink()" [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)">Valider</button>
       </div>
     </mat-tab>
 
@@ -38,7 +38,6 @@
     <mat-tab label="Contact">
       <h4>Formulaire de recherche</h4>
       <!-- formulaire pour rechercher un contact-->
-      <form class="form-inline">
         <!--name field-->
         <mat-form-field>
           <input matInput type="text" placeholder="Saisir le nom" [(ngModel)]="namePersonEntered">
@@ -56,7 +55,7 @@
         &nbsp;
         <!--activity field-->
         <mat-form-field>
-          <mat-select placeholder="Activité" [(ngModel)]="activityPersonSelected">
+          <mat-select placeholder="Activité" [(ngModel)]="activityIdPersonSelected">
             <mat-option [value]="0" selected>TOUTES</mat-option>
             <mat-option *ngFor="let activity of activityList" [value]="activity.id">
               {{activity.name}}
@@ -64,10 +63,10 @@
           </mat-select>
         </mat-form-field>
         <div>
-          <button (click)='searchPerson()' routerLink="/resultat-recherche" [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)"
+          <button (click)="searchPerson()" [disabled]="(namePersonEntered.length == 0 && firstNameEntered.length == 0 && uidEntered.length == 0 && activityIdPersonSelected == 0)"
             mat-flat-button>Valider</button>
         </div>
-      </form>
     </mat-tab>
   </mat-tab-group>
 </div>
+<app-result *ngIf="((linkListFound || personListFound).length > 0) || (linkListFound || personListFound) == null" [linkListFound]="linkListFound" [personListFound]= "personListFound" ></app-result>

@@ -10,7 +10,7 @@
   <div class="container-fluid">
     <!-- for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+      <button id="button-menu" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
         aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -23,30 +23,30 @@
     <!-- Nav links and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav"> 
-        <li class="active"><a routerLink="/accueil"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
-        <li><a routerLink="/activite/commun">Commun</a></li>
+        <li class="active"><a routerLink="/accueil" (click)= "closeAutoButtonMenu()"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
+        <li><a routerLink="/activite/commun" (click)= "closeAutoButtonMenu()">Commun</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assets
             Robotic<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a routerLink="/activite/blueprism">BluePrism</a></li>
+            <li><a routerLink="/activite/blueprism" (click)= "closeAutoButtonMenu()">BluePrism</a></li>
             <li role="separator" class="divider"></li>
-            <li><a routerLink="/activite/contextor">Contextor</a></li>
+            <li><a routerLink="/activite/contextor" (click)= "closeAutoButtonMenu()">Contextor</a></li>
           </ul>
         </li>
-        <li><a routerLink="/activite/web">Web</a></li>
+        <li><a routerLink="/activite/web" (click)= "closeAutoButtonMenu()">Web</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assets
             Autonomes<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a routerLink="/activite/autres-assets">Autres Assets</a></li>
+            <li><a routerLink="/activite/autres-assets" (click)= "closeAutoButtonMenu()">Autres Assets</a></li>
             <li role="separator" class="divider"></li>
-            <li><a routerLink="/activite/suivi-de-production">Suivi de Production</a></li>
+            <li><a routerLink="/activite/suivi-de-production" (click)= "closeAutoButtonMenu()">Suivi de Production</a></li>
           </ul>
         </li>
       </ul>
       <div class="navbar-right">
-        <button routerLink="/recherche"type="submit" class="btn btn-warning">Rechercher &nbsp;<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        <button routerLink="/recherche" (click)= "closeAutoButtonMenu()" type="submit" class="btn btn-warning">Rechercher &nbsp;<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -15,4 +15,13 @@ activityList: Activity[];
   ngOnInit() {
   }
 
+  // close auto menu in reponsive mode
+  closeAutoButtonMenu() {
+    document.getElementById('button-menu').setAttribute('aria-expanded', 'false');
+    // document.getElementById('button-menu').setAttribute('class', 'navbar-toggle collapsed');
+    document.getElementById('bs-example-navbar-collapse-1').setAttribute('class', 'collapse navbar-collapse');
+    // document.getElementById('bs-example-navbar-collapse-1').setAttribute('aria-expanded', 'false');
+    // document.getElementById('bs-example-navbar-collapse-1').style.height = '1px';
+  }
+
 }

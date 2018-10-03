@@ -5,6 +5,9 @@ import { LinkService } from 'src/app/services/link.service';
 import { Activity } from 'src/app/interfaces/activity';
 import { ActivityService } from 'src/app/services/activity.service';
 import { Link } from 'src/app/interfaces/link';
+import { PersonService } from 'src/app/services/person.service';
+import { Person } from 'src/app/interfaces/person';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,19 +20,20 @@ export class SearchComponent implements OnInit {
   linkTypeList: LinkType[] = [];
   activityList: Activity[] = [];
 
-  public titleSearchedPatern = '';
-  public linkTypeIdSelected = 0;
-  public activityIdSelected = 0;
+  titleSearchedPatern = '';
+  linkTypeIdSelected = 0;
+  activityIdSelected = 0;
   linkListFound: Link[] = [];
 
   namePersonEntered = '';
   firstNameEntered = '';
   uidEntered = '';
-  activityPersonSelected: Activity = null;
+  activityIdPersonSelected = 0;
+  personListFound: Person[] = [];
 
 
-
-  constructor(public linkService: LinkService, public linkTypeService: LinkTypeService, public activityService: ActivityService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(public linkService: LinkService, public linkTypeService: LinkTypeService, public activityService: ActivityService, public personService: PersonService, public router: Router) {
 
    }
 
@@ -47,19 +51,36 @@ export class SearchComponent implements OnInit {
 
   }
 
-searchLink() {
-  // tslint:disable-next-line:max-line-length
-  console.log('titleSearchedPatern = ', this.titleSearchedPatern, 'linkTypeSelected =', this.linkTypeIdSelected, 'activitySelected=', this.activityIdSelected);
-// tslint:disable-next-line:max-line-length
-return this.linkService.getListLinkSearched(this.titleSearchedPatern, this.linkTypeIdSelected, this.activityIdSelected).subscribe((linkListFound: Link[]) => {
-this.linkListFound = linkListFound;
-console.log( 'this.linkListFound', this.linkListFound);
-});
+  searchLink() {
+    this.linkListFound = [];
+    this.personListFound = [];
+    // tslint:disable-next-line:max-line-length
+    console.log('titleSearchedPatern = ', this.titleSearchedPatern, 'linkTypeSelected =', this.linkTypeIdSelected, 'activitySelected=', this.activityIdSelected);
+    // tslint:disable-next-line:max-line-length
+    return this.linkService.getListLinkSearched(this.titleSearchedPatern, this.linkTypeIdSelected, this.activityIdSelected).subscribe((linkListFound: Link[]) => {
+    this.linkListFound = linkListFound;
+    console.log( 'this.linkListFound', this.linkListFound);
+    this.titleSearchedPatern = '';
+    this.linkTypeIdSelected = 0;
+    this.activityIdSelected = 0;
+    });
+  }
 
-}
 
-searchPerson() {
-// return this.linkService.
-}
-
+  searchPerson() {
+    this.personListFound = [];
+    this.linkListFound = [];
+     // tslint:disable-next-line:max-line-length
+    console.log('namePersonEntered =', this.namePersonEntered, 'firstNameEntered=', this.firstNameEntered, 'uidEntered=', this.uidEntered, 'activityIdPersonSelected=', this.activityIdPersonSelected);
+    return this.personService.getListPersonSearch
+    (this.namePersonEntered, this.firstNameEntered, this.uidEntered, this.activityIdPersonSelected)
+    .subscribe((personListFound: Person[]) => {
+      this.personListFound = personListFound;
+      console.log( 'this.personListFound', this.personListFound);
+      this.namePersonEntered = '';
+      this.firstNameEntered = '';
+      this.uidEntered = '';
+      this.activityIdPersonSelected = 0;
+    });
+  }
 }
