@@ -1,14 +1,15 @@
-<div class="form-group">
+<div id="parent-element"class="form-group">
   <!--faire une rq pour recup tous les linkType existant ds la table-->
   <h3>Que cherchez-vous?</h3>
 
-  <mat-tab-group>
+  <mat-tab-group >
     <!--procedure/lien sheet-->
     <mat-tab label="Procédure/Lien">
       <h4>Formulaire de recherche</h4>
       <!--label field-->
       <mat-form-field>
-        <input matInput type="text" placeholder="Saisir un nom" [(ngModel)]="titleSearchedPatern" />
+        <input matInput type="text" placeholder="Saisir un nom" pattern="[a-zA-ZÀ-ÿ]" [(ngModel)]="titleSearchedPatern" />
+        <mat-error >Nom invalide. Merci de saisir aucun chiffre ou caractére spécial.</mat-error>
       </mat-form-field>
       &nbsp;
       <!-- typeLink field-->
@@ -30,7 +31,7 @@
         </mat-select>
       </mat-form-field>
       <div>
-        <button mat-flat-button (click)="searchLink()" [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)">Valider</button>
+        <button mat-flat-button (click)="searchLink()"  [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)">Valider</button>
       </div>
     </mat-tab>
 
@@ -40,17 +41,20 @@
       <!-- formulaire pour rechercher un contact-->
         <!--name field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir le nom" [(ngModel)]="namePersonEntered">
+          <input matInput type="text" placeholder="Saisir le nom" pattern="[a-zA-ZÀ-ÿ]" ngControl  [(ngModel)]="namePersonEntered">
+          <mat-error >Nom invalide. Merci de saisir aucun chiffre ou caractére spécial.</mat-error>
         </mat-form-field>
         &nbsp;
         <!--firstname field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir le prénom" [(ngModel)]="firstNameEntered">
+          <input matInput  shouldLabelFloat type="text" placeholder="Saisir le prénom"  pattern="[a-zA-ZÀ-ÿ]" [(ngModel)]="firstNameEntered">
+          <mat-error >Prénom invalide. Merci de saisir aucun chiffre.</mat-error>
         </mat-form-field>
         &nbsp;
         <!--uid field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir l'UID" [(ngModel)]="uidEntered">
+          <input matInput type="text" placeholder="Saisir l'UID" pattern="[a-zA-Z0-9]" [(ngModel)]="uidEntered">
+          <mat-error *ngIf="uidEntered" >UID invalide. Merci de saisir aucun caractére spécial.</mat-error>
         </mat-form-field>
         &nbsp;
         <!--activity field-->
@@ -69,4 +73,4 @@
     </mat-tab>
   </mat-tab-group>
 </div>
-<app-result *ngIf="((linkListFound || personListFound).length > 0) || (linkListFound || personListFound) == null" [linkListFound]="linkListFound" [personListFound]= "personListFound" ></app-result>
+<app-result *ngIf="linkListFound || personListFound" [linkListFound]="linkListFound" [personListFound]= "personListFound"></app-result>

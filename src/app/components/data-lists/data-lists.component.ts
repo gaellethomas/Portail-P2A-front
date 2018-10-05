@@ -37,8 +37,6 @@ export class DataListsComponent implements OnInit {
 
   ngOnInit() {  }
 
-
-
   private activityNameToNumber( activityName: string): number {
     let result: number = null;
 

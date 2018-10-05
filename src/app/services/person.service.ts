@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Person } from '../interfaces/person';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,7 +18,7 @@ export class PersonService {
   }
 
   // tslint:disable-next-line:max-line-length
-  getListPersonSearch(namePersonEntered: string, firstNameEntered: string, uidEntered: string, activityIdPersonSelected: number): Observable<Person[]> {
+  getListPersonSearch(namePersonEntered: string, firstNameEntered: string, uidEntered: string, activityIdPersonSelected: number): Observable<HttpResponse<Person[]>> {
 
     // construct the url with its optional parameters
     const url = this.API_URL_PERSON +
@@ -43,6 +43,8 @@ export class PersonService {
       // put the activityIdPersonSelected if it is not equal 0
       (activityIdPersonSelected !== 0 ? 'activityId=' + activityIdPersonSelected : '');
         console.log('url', url);
-    return this.http.get<Person[]>(url);
+    return this.http.get<Person[]> (url, {
+       observe: 'response'}
+       );
   }
 }

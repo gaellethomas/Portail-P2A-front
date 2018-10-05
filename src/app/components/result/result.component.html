@@ -1,31 +1,21 @@
-<!-- faire un ngFor avec la reponse rq sql de la recherche 
-<mat-nav-list>
-    <a mat-list-item href="..." *ngFor="let link of links"> {{ link }} </a>
- </mat-nav-list>
- or
- <mat-selection-list #result>
-    <mat-list-option *ngFor="let result of resultList">
-      {{result}}
-    </mat-list-option>
-  </mat-selection-list>-->
-
 <h3>Résultat de la recherche</h3>
 
-<p *ngIf="linkListFound == null && personListFound == null">Aucun résultat pour votre recherche</p>
+<p *ngIf="linkListFound.length == 0 && personListFound.length == 0 ">Aucun résultat pour votre recherche</p>
 
 <ng-container *ngIf="linkListFound.length > 0 || personListFound.length > 0">
-  <p>{{linkListFound.length + personListFound.length}} résulat(s) pour votre recherche</p>
-  <!--result for search process or link-->
-  <mat-selection-list #resultLink *ngIf="linkListFound.length > 0 ;else resultPerson">
-    <mat-list-option *ngFor="let link of linkListFound">
+  <p>{{linkListFound.length || personListFound.length}} résultat(s) pour votre recherche</p>
+
+  <!--result for search link-->
+  <mat-list #result *ngIf="linkListFound.length > 0 ;else resultPerson">
+    <mat-list-item *ngFor="let link of linkListFound">
       <a href="{{link.path}}">{{link.title}}</a>
-    </mat-list-option>
-  </mat-selection-list>
+      <mat-icon class= "noir"><a [routerLink]="'/mise-a-jour'">create</a></mat-icon>
+    </mat-list-item>
+  </mat-list>
 
 
 
-  <!--result for search contact-->
-
+  <!--result for search personne-->
   <mat-card #resultPerson *ngFor="let person of personListFound">
 
     <mat-card-header>
@@ -33,18 +23,40 @@
         <mat-icon>face</mat-icon>
       </div>
       <mat-card-title>{{person.name}} {{person.firstName}}</mat-card-title>
-      <mat-card-subtitle mailto *ngIf="person.mailAddress">{{person.mailAddress}}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="person.mailAddress"><a href="mailto:{{person.mailAddress}}">{{person.mailAddress}}</a></mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
+      <!-- <mat-list>
+        <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
+        <mat-list-item *ngIf="person.phoneNumber">tél mobile:{{person.phoneNumber}}</mat-list-item>
+        <ng-container *ngIf="expanded">
+          <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
+        <mat-list-item *ngIf="person.phoneNumber">tél mobile:{{person.phoneNumber}}</mat-list-item>
+        </ng-container>-->
+      <!-- ajouter un expand more pour plus de details-->
+      <!-- <mat-list-item *ngIf="!expanded" (click)="expanded = !expanded">+</mat-list-item>
+        <mat-list-item *ngIf="expanded" (click)="expanded = !expanded">-</mat-list-item>
+      </mat-list> -->
       <mat-list>
         <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
         <mat-list-item *ngIf="person.phoneNumber">tél mobile:{{person.phoneNumber}}</mat-list-item>
-        <mat-list-item></mat-list-item>
-        <!-- ajouter un expand more pour plus de details-->
-        <mat-list-item><a href="#">+</a></mat-list-item>
       </mat-list>
-    </mat-card-content>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Informations complémentaires</mat-panel-title>
+          <mat-panel-description>
 
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list>
+        <mat-list-item *ngIf="person.workstationName">ipadress: {{person.workstationName}}</mat-list-item>
+        <mat-list-item *ngIf="person.team">equipe:{{person.team.name}}</mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+
+
+
+    </mat-card-content>
   </mat-card>
 </ng-container>

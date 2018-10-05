@@ -1,33 +1,9 @@
 <div>
-<h2>{{activityName}}</h2>
+<h2>{{activityName.toUpperCase()}}</h2>
 <br>
 <app-link-list *ngFor="let linkType of linkTypeList" [activityId]= "activityIdCurrent" [linkTypeId]= "linkType.id"  [linkTypeName]= "linkType.nameLinkType"></app-link-list> 
 <app-person-list [activityId]= "activityIdCurrent" [belongP2a]= "true"></app-person-list>
 <app-person-list [activityId]= "activityIdCurrent" [belongP2a]= "false"></app-person-list>
-
-
-
-<p>body1</p>
-<p>body2</p>
-<p>body3</p>
-<p>body4</p>
-<p>body5</p>
-<p>body6</p>
-<p>body7</p>
-<p>body8</p>
-
-<p>body9</p>
-<p>body10</p>
-<p>body11</p>
-<p>body12</p>
-<p>body13</p>
-<p>body14</p>
-
-
-
-
-
-
 
 </div>
 <!--

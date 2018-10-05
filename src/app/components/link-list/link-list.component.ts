@@ -25,7 +25,15 @@ export class LinkListComponent implements OnInit, OnChanges {
 
       this.linkService.getListByLinkTypeIdAndActivityId(this.linkTypeId, this.activityId).subscribe((linkList: Link[]) => {
         this.linkList = linkList;
-      });
+        console.log('Retour back this.personList', this.linkList);
+      },
+       (error) => {
+         // 302= pas de resultat le back renvoi un tableau vide
+        if (error.status !== 302) {
+        console.log('Le back a renvoyé une erreur !', error);
+        }
+      }
+    );
   }
 }
 

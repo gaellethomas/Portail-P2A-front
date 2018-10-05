@@ -25,7 +25,8 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule, MatButtonModule} from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -59,7 +60,7 @@ const routes: Routes = [
     ResultComponent,
     DataListsComponent,
     LinkListComponent,
-    PersonListComponent
+    PersonListComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,8 +76,10 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatExpansionModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

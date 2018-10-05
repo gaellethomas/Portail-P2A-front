@@ -10,7 +10,6 @@ export interface Person {
     mobilePhoneNumber: number;
     mailAddress: string;
     team: Team;
-    ipAddress: string;
-    xpAddress: string;
+    workstationName: string;
     activityList: Activity[];
 }

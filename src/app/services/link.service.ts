@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Link } from 'src/app/interfaces/link';
 import { Observable } from 'rxjs';
@@ -12,15 +12,18 @@ export class LinkService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Link[]> {
-    return this.http.get<Link[]>(this.API_URL_LINK);
+  getAll(): Observable<HttpResponse<Link[]>> {
+    return this.http.get<Link[]>(this.API_URL_LINK, {
+      observe: 'response'
+    });
   }
+
 
   getListByLinkTypeIdAndActivityId(linkTypeId: number, activityId: number): Observable<Link[]> {
     return this.http.get<Link[]>(this.API_URL_LINK + '/?linkTypeId=' + linkTypeId + '&activityId=' + activityId);
   }
 
-  getListLinkSearched(titleSearchedPatern: string, linkTypeId: number, activityId: number): Observable<Link[]> {
+  getListLinkSearched(titleSearchedPatern: string, linkTypeId: number, activityId: number): Observable<HttpResponse<Link[]>> {
 
     // construct the url with its optional parameters
     const url = this.API_URL_LINK +
@@ -37,6 +40,8 @@ export class LinkService {
       // put the activityId if it is not equal 0
       (activityId !== 0 ? 'activityId=' + activityId : '');
 
-    return this.http.get<Link[]>(url);
+    return this.http.get<Link[]>(url, {
+      observe: 'response'
+    });
   }
 }

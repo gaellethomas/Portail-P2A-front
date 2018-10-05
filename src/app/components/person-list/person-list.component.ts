@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
 import { Person } from 'src/app/interfaces/person';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-person-list',
@@ -26,8 +27,10 @@ export class PersonListComponent implements OnInit, OnChanges {
         this.personList = personList;
         console.log('Retour back this.personList', this.personList);
       },
-      (error) => {
+       (error) => {
+         if (error.status !== 302) {
         console.log('Le back a renvoyé une erreur !', error);
+         }
       }
     );
   }
