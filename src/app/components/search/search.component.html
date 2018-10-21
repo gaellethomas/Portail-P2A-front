@@ -1,16 +1,17 @@
-<div id="parent-element"class="form-group">
+<div id="parent-element" class="form-group">
   <!--faire une rq pour recup tous les linkType existant ds la table-->
   <h3>Que cherchez-vous?</h3>
 
-  <mat-tab-group >
+  <mat-tab-group>
     <!--procedure/lien sheet-->
-    <mat-tab label="Procédure/Lien">
+    <mat-tab label="Lien">
       <h4>Formulaire de recherche</h4>
       <!--label field-->
       <mat-form-field>
-        <input matInput type="text" placeholder="Saisir un nom" pattern="[a-zA-ZÀ-ÿ]" [(ngModel)]="titleSearchedPatern" />
-        <mat-error >Nom invalide. Merci de saisir aucun chiffre ou caractére spécial.</mat-error>
+        <input matInput type="text" placeholder="Saisir un libellé" [(ngModel)]="titleSearchedPatern" pattern="[^&?]*"/>
+        <mat-error>Libellé invalide</mat-error>
       </mat-form-field>
+      &nbsp;
       &nbsp;
       <!-- typeLink field-->
       <mat-form-field>
@@ -31,30 +32,32 @@
         </mat-select>
       </mat-form-field>
       <div>
-        <button mat-flat-button (click)="searchLink()"  [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)">Valider</button>
+        <br>
+        <button mat-flat-button (click)="searchLink()" [disabled]="(titleSearchedPatern.length == 0 && linkTypeIdSelected == 0 && activityIdSelected == 0)">Valider</button>
       </div>
     </mat-tab>
 
     <!--contact sheet-->
-    <mat-tab label="Contact">
+    <mat-tab label="Personne">
       <h4>Formulaire de recherche</h4>
       <!-- formulaire pour rechercher un contact-->
         <!--name field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir le nom" pattern="[a-zA-ZÀ-ÿ]" ngControl  [(ngModel)]="namePersonEntered">
-          <mat-error >Nom invalide. Merci de saisir aucun chiffre ou caractére spécial.</mat-error>
-        </mat-form-field>
+            <input matInput type="text" placeholder="Saisir le nom" 
+            pattern="[a-zA-ZÀ-ÿ\s-]*"  [(ngModel)]="namePersonEntered" >
+            <mat-error>Nom invalide.</mat-error>
+          </mat-form-field>
         &nbsp;
         <!--firstname field-->
         <mat-form-field>
-          <input matInput  shouldLabelFloat type="text" placeholder="Saisir le prénom"  pattern="[a-zA-ZÀ-ÿ]" [(ngModel)]="firstNameEntered">
-          <mat-error >Prénom invalide. Merci de saisir aucun chiffre.</mat-error>
+          <input matInput type="text" placeholder="Saisir le prénom" pattern="[a-zA-ZÀ-ÿ\s-]*" [(ngModel)]="firstNameEntered">
+          <mat-error>Prénom invalide.</mat-error>
         </mat-form-field>
         &nbsp;
         <!--uid field-->
         <mat-form-field>
-          <input matInput type="text" placeholder="Saisir l'UID" pattern="[a-zA-Z0-9]" [(ngModel)]="uidEntered">
-          <mat-error *ngIf="uidEntered" >UID invalide. Merci de saisir aucun caractére spécial.</mat-error>
+          <input matInput type="text" placeholder="Saisir l'UID" pattern="[a-zA-Z0-9]*" [(ngModel)]="uidEntered">
+          <mat-error>UID invalide.</mat-error>
         </mat-form-field>
         &nbsp;
         <!--activity field-->
@@ -67,10 +70,11 @@
           </mat-select>
         </mat-form-field>
         <div>
+          <br>
           <button (click)="searchPerson()" [disabled]="(namePersonEntered.length == 0 && firstNameEntered.length == 0 && uidEntered.length == 0 && activityIdPersonSelected == 0)"
             mat-flat-button>Valider</button>
         </div>
     </mat-tab>
   </mat-tab-group>
 </div>
-<app-result *ngIf="linkListFound || personListFound" [linkListFound]="linkListFound" [personListFound]= "personListFound"></app-result>
+<app-result *ngIf="linkListFound || personListFound" [linkListFound]="linkListFound" [personListFound]="personListFound"></app-result>

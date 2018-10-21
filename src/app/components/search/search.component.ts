@@ -1,4 +1,4 @@
-import { Component, OnInit, Self, Optional } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LinkTypeService } from 'src/app/services/link-type.service';
 import { LinkType } from 'src/app/interfaces/link-type';
 import { LinkService } from 'src/app/services/link.service';
@@ -36,8 +36,12 @@ export class SearchComponent implements OnInit {
   personListFound: Person[];
   message = '';
 
-  // tslint:disable-next-line:max-line-length
-  constructor(public linkService: LinkService, public linkTypeService: LinkTypeService, public activityService: ActivityService, public personService: PersonService, public router: Router) {
+
+  constructor(private linkService: LinkService,
+              private linkTypeService: LinkTypeService,
+              private activityService: ActivityService,
+              private personService: PersonService,
+              private router: Router) {
 
   }
 

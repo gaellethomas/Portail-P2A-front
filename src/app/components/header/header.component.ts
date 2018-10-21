@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/interfaces/activity';
+import { ActivityService } from '../../services/activity.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,6 @@ import { Activity } from 'src/app/interfaces/activity';
 })
 export class HeaderComponent implements OnInit {
 
-activityList: Activity[];
 
   constructor() { }
 

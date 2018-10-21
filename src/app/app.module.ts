@@ -25,7 +25,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule, MatButtonModule} from '@angular/material';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 
 const routes: Routes = [

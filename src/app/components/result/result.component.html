@@ -9,7 +9,7 @@
   <mat-list #result *ngIf="linkListFound.length > 0 ;else resultPerson">
     <mat-list-item *ngFor="let link of linkListFound">
       <a href="{{link.path}}">{{link.title}}</a>
-      <mat-icon class= "noir"><a [routerLink]="'/mise-a-jour'">create</a></mat-icon>
+      <mat-icon class="noir"><a [routerLink]="'/mise-a-jour'">create</a></mat-icon>
     </mat-list-item>
   </mat-list>
 
@@ -27,36 +27,27 @@
     </mat-card-header>
 
     <mat-card-content>
-      <!-- <mat-list>
-        <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
-        <mat-list-item *ngIf="person.phoneNumber">tél mobile:{{person.phoneNumber}}</mat-list-item>
-        <ng-container *ngIf="expanded">
-          <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
-        <mat-list-item *ngIf="person.phoneNumber">tél mobile:{{person.phoneNumber}}</mat-list-item>
-        </ng-container>-->
-      <!-- ajouter un expand more pour plus de details-->
-      <!-- <mat-list-item *ngIf="!expanded" (click)="expanded = !expanded">+</mat-list-item>
-        <mat-list-item *ngIf="expanded" (click)="expanded = !expanded">-</mat-list-item>
-      </mat-list> -->
       <mat-list>
         <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
-        <mat-list-item *ngIf="person.phoneNumber">tél mobile:{{person.phoneNumber}}</mat-list-item>
+        <mat-list-item *ngIf="person.phoneNumber">tél mobile: {{person.phoneNumber}}</mat-list-item>
       </mat-list>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>Informations complémentaires</mat-panel-title>
-          <mat-panel-description>
-
-          </mat-panel-description>
+          <mat-panel-title>Plus d'infos</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-list>
-        <mat-list-item *ngIf="person.workstationName">ipadress: {{person.workstationName}}</mat-list-item>
-        <mat-list-item *ngIf="person.team">equipe:{{person.team.name}}</mat-list-item>
+          <mat-list-item *ngIf="person.workstationName">Adresse XP: {{person.workstationName}}</mat-list-item>
+          <mat-list-item *ngIf="person.team">Equipe: {{person.team.name}}</mat-list-item>
+        </mat-list>
+        <mat-list *ngIf="person.activityList.length > 0">
+          <mat-list-item>Activité(s):</mat-list-item>
+              <mat-list-item >
+                <ul>
+                  <li *ngFor="let activityName of person.activityList">{{activityName.name}}</li>
+                </ul>
+              </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
-
-
-
     </mat-card-content>
   </mat-card>
 </ng-container>

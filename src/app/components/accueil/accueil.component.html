@@ -1,27 +1,17 @@
 <h2>
   Bienvenue, puis-je vous aider?
  </h2>
- <div>
-   <img src="../../../assets/credito-par-ici.png">
- </div>
- <!--exemple responsive container bootstrap-->
+ <div class="container"> 
+  <img src="../../../assets/credito-par-ici.png" alt="crédito souriant">
+  <h4>Cliquez sur l'activité de votre choix.</h4>
+  <h4>Et retrouvez vos applis, vos liens, vos contacts...</h4>
+</div>
+ <!--exemple responsive container-->
  <div class="container">
-   <div class="row">
-     <div class="col-sm-4">
-       <h3>Column 1</h3>
-       <p>Lorem ipsum dolor..</p>
-       <p>Ut enim ad..</p>
-     </div>
-     <div class="col-sm-4">
-       <h3>Column 2</h3>
-       <p>Lorem ipsum dolor..</p>
-       <p>Ut enim ad..</p>
-     </div>
-     <div class="col-sm-4">
-       <h3>Column 3</h3> 
-       <p>Lorem ipsum dolor..</p>
-       <p>Ut enim ad..</p>
-     </div>
-    
+   <div class="row" >
+     <div class="col-sm-4 activityCard" *ngFor="let activity of activityList">
+       <h3 class="activityNameColor"><a routerLink="/activite/{{activity.name.toLowerCase()}}">{{activity.name.toUpperCase()}}</a></h3>
+       <p>{{activity.description}}</p> 
+     </div>    
    </div>
  </div>

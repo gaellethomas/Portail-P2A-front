@@ -6,11 +6,40 @@
       <div *ngIf="!belongP2a" class="panel-heading">Contacts</div>
 
     <!--List group of links-->
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let person of personList">
-        Nom: {{person.name}} Prénom: {{person.firstName}} mail: {{person.mailAddress}} Num. Tél.:
-        {{person.phoneNumber}}
-      </li>
-    </ul>
+    
+    <mat-card #resultPerson *ngFor="let person of personList">
+
+        <mat-card-header>
+          <div mat-card-avatar>
+            <mat-icon>face</mat-icon>
+          </div>
+          <mat-card-title>{{person.name}} {{person.firstName}}</mat-card-title>
+          <mat-card-subtitle *ngIf="person.mailAddress"><a href="mailto:{{person.mailAddress}}">{{person.mailAddress}}</a></mat-card-subtitle>
+        </mat-card-header>
+    
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngIf="person.phoneNumber">tél fixe: {{person.phoneNumber}}</mat-list-item>
+            <mat-list-item *ngIf="person.phoneNumber">tél mobile: {{person.phoneNumber}}</mat-list-item>
+          </mat-list>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Plus d'infos</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item *ngIf="person.workstationName">Adresse XP: {{person.workstationName}}</mat-list-item>
+              <mat-list-item *ngIf="person.team">Equipe: {{person.team.name}}</mat-list-item>
+            </mat-list>
+            <mat-list *ngIf="person.activityList.length > 0">
+              <mat-list-item>Activité(s):</mat-list-item>
+                  <mat-list-item >
+                    <ul>
+                      <li *ngFor="let activityName of person.activityList">{{activityName.name}}</li>
+                    </ul>
+                  </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-card-content>
+      </mat-card>
   </div>
 </ng-container>
