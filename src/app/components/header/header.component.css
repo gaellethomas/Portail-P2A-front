@@ -5,5 +5,6 @@
 }
 .bkg-header{
     background-image :url('../../../assets/resized_1800x400/immeuble-accueil-P2A-recadre-direct.jpg'); 
-    padding-top: 130px;
+    padding-top: 120px;
+    background-repeat: repeat-x;
 }

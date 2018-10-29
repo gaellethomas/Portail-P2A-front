@@ -60,7 +60,7 @@ const routes: Routes = [
     ResultComponent,
     DataListsComponent,
     LinkListComponent,
-    PersonListComponent,
+    PersonListComponent
   ],
   imports: [
     BrowserModule,

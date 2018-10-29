@@ -9,7 +9,7 @@
   <mat-list #result *ngIf="linkListFound.length > 0 ;else resultPerson">
     <mat-list-item *ngFor="let link of linkListFound">
       <a href="{{link.path}}">{{link.title}}</a>
-      <mat-icon class="noir"><a [routerLink]="'/mise-a-jour'">create</a></mat-icon>
+      <!-- <mat-icon class="noir"><a [routerLink]="'/mise-a-jour'">create</a></mat-icon>-->
     </mat-list-item>
   </mat-list>
 
